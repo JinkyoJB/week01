@@ -1,31 +1,55 @@
+
+""" 
+1. itertools활용하여 순열로 푼 풀이
+"""
 # import sys
+# from itertools import permutations
 
-# n = int(sys.stdin.readline()) # 전체 카드의 수
-# k = int(sys.stdin.readline()) # 합칠 카드의 수
+# input = sys.stdin.readline
 
-# numbers = [sys.stdin.readline().rstrip() for i in range(n)]
+# n = int(input())
+# k = int(input())
 
-# array = set()
+# cards = [input().rstrip() for _ in range(n)]
 
-numbers = ["1", "2", "3", "4", "5"]
-array = set()
-visit = [0] * 5
-k = 2
+# cases = set(map(lambda x:''.join(x) ,permutations(cards, k)))
 
-""" itertools permutation 라이브러리 존재함 """
-def permutation(count, perm, visit):
-    global numbers
-    if count == k:
-        array.add(''.join(perm))
+# print(cases)
+
+# print(len(cases))
+
+
+"""
+2. 재귀로 이어붙인 풀이 
+"""
+import sys
+input = sys.stdin.readline
+
+n = int(input())
+k = int(input())
+
+cards = [input().rstrip() for _ in range(n)]
+
+dp = [0] * n
+res = set()
+
+def concat(cards, curStr ,count):
+
+    if (count == k):
+        res.add(''.join(curStr))
         return
-    for idx in range(5):
-        if not visit[idx]:
-            visit[idx] = 1
-            permutation(count + 1, perm+[numbers[idx]], visit)
-            visit[idx] = 0
+    
+    for i in range(n):
+        if dp[i] == 0:
+            dp[i] = 1
+        
+            concat(cards, curStr + [cards[i]] ,count + 1)
 
-# visit = [0] * n
-# permutation(0, [], visit)
-# print(len(array))
+            dp[i] = 0
 
-permutation(0, [], visit)
+
+concat(cards, [] ,0)
+print(len(res))
+        
+        
+

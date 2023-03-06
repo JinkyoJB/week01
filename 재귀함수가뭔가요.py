@@ -23,4 +23,3 @@ def whatIsRecursion(depth, n):
 
 whatIsRecursion(depth, n)
 print("라고 답변하였지.")
-
