@@ -1,0 +1,10 @@
+import sys
+
+n,x = map(int, sys.stdin.readline().strip().split())
+
+
+lst = list(map(int, sys.stdin.readline().split()))
+
+for i in lst:
+    if i < x:
+        print(i, end=' ')
