@@ -1,18 +1,3 @@
-# # 초안
-
-# def hanoi(N, from_loc, to_loc, mid_loc):
-#     if N == 1:
-#         print(from_loc, '', to_loc)
-#         cnt += 1
-#     else:
-#         hanoi(N-1, from_loc, mid_loc)
-#         print(from_loc, '', to_loc)    # print(f'N번째 원판이 {from_loc}에서 {to_loc}로 이동하였습니다.')
-#         hanoi(N-1, mid_loc, to_loc)
-#         cnt += 1
-
-#     cnt = 0
-#     print(cnt)
-
 
 # 왜 s1, s2에 path가 담기지??
 # 매개변수 늘리기: 'int' object is not iterable / return을 해줘야 cnt에 반영됨. 
@@ -23,12 +8,15 @@ def hanoi(N, from_loc, to_loc, mid_loc, path=[]):
         return 1                     
     else:
         s1 = hanoi(N-1, from_loc, mid_loc, to_loc, path)
+
         x = str(from_loc)+str(to_loc)
         path.append(x)
+        
         s2 = hanoi(N-1, mid_loc, to_loc, from_loc, path)
-        print(s1 + s2 + 1)
-        for i in path:
-            print(i)
+        
+        return s1 + s2 + 1
+        # for i in path:
+        #     print(i)
 
 hanoi(3, 1, 3, 2, [])
 
