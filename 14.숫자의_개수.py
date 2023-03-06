@@ -11,3 +11,5 @@ for i in range(0, 10, 1):        # 0부터 9까지 나타날 숫자
         if X[j] == i:
             cnt += 1
     print(cnt)
+
+## count() 
